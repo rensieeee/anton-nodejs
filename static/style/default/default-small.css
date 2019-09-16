@@ -1,0 +1,166 @@
+* {
+    margin: 0px;
+    font-family: sans-serif;
+}
+
+header {
+    position: absolute;
+    height: 70px;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    padding: 1em;
+    padding-top: 1.5em;
+}
+
+header img {
+    position: absolute;
+    top: 0;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    z-index: -10;
+}
+
+header h1 a {
+    color: black;
+    text-decoration: none;
+    font-size:calc(12px+1.5vw);
+}
+
+nav {
+    position: absolute;
+    top: 100px;
+    min-height: 72px;
+    margin-bottom: 0px;
+    padding: 0px;
+    width: 100%;
+    background-color: #f7f5e7;
+}
+
+nav a {
+    text-decoration: none;
+}
+
+div {
+    position: relative;
+    float: none;
+    display: table;
+    margin-left: 0%;
+    min-width: 100%;
+    width: 100%;
+    height: 70px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border: 1px solid black;
+    text-align: center;
+    font-size:calc(12px + 0.5vw);
+    background-color: #f7f5e7;
+    color: black;
+    cursor: pointer;
+}
+
+div p {
+    display: table-cell;
+    vertical-align: middle;
+    text-decoration-line: none;
+}
+
+div:hover {
+    background-color: #220e10;
+    color: #f7f5e7;
+}
+
+span {
+    z-index: 100;
+    position: fixed;
+    left: 0px;
+    top: 100px;
+    width: 100vw;
+    max-width: 100%;
+    height: 100%;
+    background-color: rgba(255,255,255,.85);
+}
+
+input[type="checkbox"]{
+    width: 25px;
+    height: 25px;
+}
+
+span p {
+    width: 100%;
+    height: 40px;
+    font-size: 40px;
+}
+
+main {
+    margin-left: 10%;
+    margin-top: 200px;
+    margin-right: 10%;
+}
+
+.centered {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+article {
+    float: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 90%;
+    margin-bottom: 20px;
+    margin-top: 200px;
+}
+
+aside {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    float: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    width: 90%;
+    background-color: #f7f5e7;
+}
+
+section {
+    margin: 1em;
+}
+
+img {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+footer {
+    position: static;
+    padding-left: 0;
+    padding-top: 0.5em;
+    margin-top: 1em;
+    background-color: #220e10;
+    color: white;
+}
+
+footer p {
+    margin-left: 1em;
+}
+
+footer a {
+    color: #e62b16;
+}
+

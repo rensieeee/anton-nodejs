@@ -1,0 +1,19 @@
+footer {
+    position: absolute;
+    bottom: 0px;
+    width: 100vw;
+}
+
+@media only screen and (min-width: 1075px){
+    footer {
+        position: fixed;
+        padding-left: 1em;
+        padding-top: 1em;
+        width: 100%;
+        min-height: 70px;
+        bottom: 0px;
+        right: 0px;
+        left: 0px;
+        font-size: 10px;
+    }
+}
