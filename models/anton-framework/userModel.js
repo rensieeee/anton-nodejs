@@ -1,8 +1,8 @@
 var BaseModel = require("../default/baseModel");
 var PasswordHash = require("password-hash");
-var UserRepository = require("../../repositories/anton-framework/userRepository");
 
 class UserModel extends BaseModel {
+
     constructor(id) {
         super();
         this.id = id; 

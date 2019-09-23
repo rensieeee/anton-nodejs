@@ -3,7 +3,11 @@
 <html>
 <% include ../templates/head %>
 <body>
-    <% include ../templates/header/not-logged-in-header %>
+    <% if (isLoggedIn) { %>
+        <% include ../templates/header/logged-in-header %>
+    <% } else { %>
+        <% include ../templates/header/not-logged-in-header %>
+    <% } %>
     <main>
         <article>
             <section>

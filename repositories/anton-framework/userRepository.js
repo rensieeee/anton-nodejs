@@ -11,7 +11,7 @@ class UserRepository extends BaseRepository {
         var users = this._database.getData();
         var result = [];
         for (let i = 0; i < users.length; i++) {
-            const user = users[i];
+            var user = users[i];
             result.push(new UserModel(user.id));
         }
         return result;

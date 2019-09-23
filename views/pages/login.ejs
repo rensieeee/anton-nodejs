@@ -1,0 +1,49 @@
+<!--Template of the index page.-->
+<!DOCTYPE html>
+<html>
+<% include ../templates/head %>
+
+<body>
+    <% if (!succeed) { %>
+        <% include ../templates/header/not-logged-in-header %>
+    <% } else { %>
+        <% include ../templates/header/logged-in-header %>
+    <% } %>
+    <main>
+        <article>
+            <section>
+                <h3>Login</h3>
+            </section>
+            <% if (!tried || !succeed) { %>
+            <section>
+                <p>You can log in here. Please don't log in anywhere else. If you do, please report how you did.</p>
+            </section>
+            <% if (tried && !succeed) { %>
+            <section>
+                <p class="error">Wrong credentials! Try again, you scum!</p>
+            </section>
+            <% } %>
+            <section>
+                <form action="login.html" method="POST">
+                    <p>
+                        E-mailaddress:
+                    </p>
+                    <input type="text" name="email" />
+                    <p>
+                        Password:
+                    </p>
+                    <input type="password" name="password" />
+                    <br />
+                    <br />
+                    <input type="submit" value="Login!">
+                </form>
+            </section>
+            <% } else { %>
+            <section>
+                <p>Alright! You are now logged in!</p>
+            </section>
+            <% } %>
+        </article>
+    </main>
+    <% include ../templates/footer %>
+</body>

@@ -16,19 +16,9 @@ Things never to touch:
 -node_modules. Only change this folder by running npm install. Never anything else.
 -package-lock.json. Only change this file by running npm install. Never anything else.
 -database/database.js. This is core framework functionality.
--BaseBlock, BaseController, BaseModel, BaseRepository. This, too, is core framework functionality.
--main.js. This is core as well.
-
-Configuration: /config.json for site data, /database/config.json for database credentials.
-
-SETUP:
-1. Clone repository on a server with node.js installed.
-2. Create a database with at least "anton-user" table, and fields. See UserRepository for specifics.
-3. Configure /config.json, /database/config.json, package.json
-4. npm install.
-5. npm start.
+-BaseBlock, BaseController, BaseModel. This, too, is core framework functionality.
 
 TODO:
--Create further basic functionality, like login, logout, change data etc.
--Allow for easy extension of models, like the user model.
--Decide where to go next with Anton.
+-Allow login and register blocks to show more insights on getData.
+-Create custom attributes.
+-Create SQL scripts to setup database.

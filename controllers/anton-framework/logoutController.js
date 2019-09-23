@@ -6,21 +6,22 @@ var BaseController = require("../default/baseController");
  * and use the Block class to get information to render the template.
  * NOTE: It is NEVER supposed to pass its own information to the template, this information should always be received by calling _block.getData().
  */
-class IndexController extends BaseController {
-    
+class LogoutController extends BaseController {
+
     constructor() {
         super();
-        var IndexBlock = require("../../blocks/" + this._sitename + "/indexBlock");
-        this._block = new IndexBlock();
+        var LogoutBlock = require("../../blocks/" + this._sitename + "/logoutBlock");
+        this._block = new LogoutBlock();
     }
 
     executeGet(req, res) {
-        res.render(this._pagesPath + "index", this._block.getData(req));
-    }
-
-    executePost(req, res) {
-
+        if (typeof(req.session.user) !== "undefined") {
+            req.session.destroy();
+            res.render(this._pagesPath + "logout", this._block.getData(req));
+        } else {
+            res.redirect("login.html");
+        } 
     }
 }
 
-module.exports = IndexController;
+module.exports = LogoutController;

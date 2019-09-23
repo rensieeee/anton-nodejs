@@ -28,50 +28,58 @@ class RegisterController extends BaseController {
     }
 
     executeGet(req, res) {
-        res.render(this._pagesPath + "register", this._block.getData(req, this.data));
+        if (typeof(req.session.user) !== "undefined") {
+            res.redirect("index.html");
+        } else {
+            res.render(this._pagesPath + "register", this._block.getData(req, this.data));
+        }
     }
 
     executePost(req, res) {
-        this.data.tried = true;
-        var account = req.body;
+        if (typeof(req.session.user) !== "undefined") {
+            res.redirect("index.html");
+        } else {
+            this.data.tried = true;
+            var account = req.body;
 
-        if (account.firstName.replace(/\s/g, '').length == 0) {
-            this.data.errors.firstName = true;
-            this.data.noErrors = false;
+            if (account.firstName.replace(/\s/g, '').length == 0) {
+                this.data.errors.firstName = true;
+                this.data.noErrors = false;
+            }
+
+            if (account.lastName.replace(/\s/g, '').length == 0) {
+                this.data.errors.lastName = true;
+                this.data.noErrors = false;
+            }
+
+            if (account.email.replace(/\s/g, '').length == 0 || account.email.indexOf('@') == -1) {
+                this.data.errors.email = true;
+                this.data.noErrors = false;
+            }
+
+            if (account.password.replace(/\s/g, '').length < 8) {
+                this.data.errors.password = true;
+                this.data.noErrors = false;
+            }
+
+            if (account.passwordConfirm.replace(/\s/g, '') != account.password) {
+                this.data.errors.password_confirm = true;
+                this.data.noErrors = false;
+            }
+
+            if (this.data.noErrors) {
+                var userRepository = new UserRepository();
+                var newId= userRepository.getNewUserId();
+                var newUser = new UserModel(newId);
+                newUser.setFirstName(account.firstName);
+                newUser.setLastName(account.lastName);
+                newUser.setEmail(account.email);
+                newUser.setPassword(account.password);
+                userRepository.saveUser(newUser);
+            }
+
+            res.render(this._pagesPath + "register", this._block.getData(req, this.data));
         }
-
-        if (account.lastName.replace(/\s/g, '').length == 0) {
-            this.data.errors.lastName = true;
-            this.data.noErrors = false;
-        }
-
-        if (account.email.replace(/\s/g, '').length == 0 || account.email.indexOf('@') == -1) {
-            this.data.errors.email = true;
-            this.data.noErrors = false;
-        }
-
-        if (account.password.replace(/\s/g, '').length < 8) {
-            this.data.errors.password = true;
-            this.data.noErrors = false;
-        }
-
-        if (account.passwordConfirm.replace(/\s/g, '') != account.password) {
-            this.data.errors.password_confirm = true;
-            this.data.noErrors = false;
-        }
-
-        if (this.data.noErrors) {
-            var userRepository = new UserRepository();
-            var newId= userRepository.getNewUserId();
-            var newUser = new UserModel(newId);
-            newUser.setFirstName(account.firstName);
-            newUser.setLastName(account.lastName);
-            newUser.setEmail(account.email);
-            newUser.setPassword(account.password);
-            userRepository.saveUser(newUser);
-        }
-
-        res.render(this._pagesPath + "register", this._block.getData(req, this.data));
     }
 }
 

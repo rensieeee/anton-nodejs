@@ -8,16 +8,15 @@ var BaseBlock = require("../default/baseBlock");
 class RegisterBlock extends BaseBlock {
     constructor() {
         super();
-        this.data = {};
         this.setTitle();
     }
 
     setTitle() {
-        this.data.title = "Register";
+        this._data.title = "Register";
     }
 
     getData(req, data) {
-        data.title = this.data.title;
+        data.title = this._data.title;
         return data;
     }
 }

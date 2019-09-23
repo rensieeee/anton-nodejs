@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html>
 <% include ../templates/head %>
+
 <body>
     <% include ../templates/header/not-logged-in-header %>
     <main>
@@ -10,69 +11,67 @@
                 <h3>Register</h3>
             </section>
             <% if (!tried || !noErrors) { %>
-                <section>
-                    <p>If you wish to register, do so here. Test the system, I dare you.</p>
-                </section>
+            <section>
+                <p>If you wish to register, do so here. Test the system, I dare you.</p>
+            </section>
+            <section>
+                <form action="register.html" method="POST">
+                    <p>
+                        First name:
+                    </p>
+                    <% if (errors.firstName) { %>
+                    <p class="error">
+                        No valid first name entered!
+                    </p>
+                    <% } %>
+                    <input type="text" name="firstName" />
+                    <p>
+                        Last name:
+                    </p>
+                    <% if (errors.lastName) { %>
+                    <p class="error">
+                        No valid last name entered!
+                    </p>
+                    <% } %>
+                    <input type="text" name="lastName" />
+                    <p>
+                        E-mailaddress:
+                    </p>
+                    <% if (errors.email) { %>
+                    <p class="error">
+                        No valid email entered!
+                    </p>
+                    <% } %>
+                    <input type="text" name="email" />
+                    <p>
+                        Password: (Must be at least 8 characters, excluding spaces)
+                    </p>
+                    <% if (errors.password) { %>
+                    <p class="error">
+                        No valid password entered!
+                    </p>
+                    <% } %>
+                    <input type="password" name="password" />
+                    <p>
+                        Confirm password:
+                    </p>
+                    <% if (errors.password_confirm) { %>
+                    <p class="error">
+                        Passwords don't match!
+                    </p>
+                    <% } %>
+                    <input type="password" name="passwordConfirm" />
+                    <br />
+                    <br />
+                    <input type="submit" value="Register!">
+                </form>
+            </section>
             <% } else { %>
-                <section>
-                    <p>Thanks for registering! It's all done, you can now log in.</p>
-                </section>
-            <% } %>
-            <% if (!tried || !noErrors) { %>
-                <section>
-                    <form action="register.html" method="POST">
-                        <p>
-                            First name:
-                        </p>
-                        <% if (errors.firstName) { %>
-                            <p class="error">
-                                No valid first name entered!
-                            </p>
-                        <% } %>
-                        <input type="text" name="firstName" />
-                        <p>
-                            Last name:
-                        </p>
-                        <% if (errors.lastName) { %>
-                        <p class="error">
-                            No valid last name entered!
-                        </p>
-                        <% } %>
-                        <input type="text" name="lastName" />
-                        <p>
-                            E-mailaddress:
-                        </p>
-                        <% if (errors.email) { %>
-                        <p class="error">
-                            No valid email entered!
-                        </p>
-                        <% } %>
-                        <input type="text" name="email" />
-                        <p>
-                            Password: (Must be at least 8 characters, excluding spaces)
-                        </p>
-                        <% if (errors.password) { %>
-                        <p class="error">
-                            No valid password entered!
-                        </p>
-                        <% } %>
-                        <input type="password" name="password" />
-                        <p>
-                            Confirm password:
-                        </p>
-                        <% if (errors.password_confirm) { %>
-                        <p class="error">
-                            Passwords don't match!
-                        </p>
-                        <% } %>
-                        <input type="password" name="passwordConfirm" />
-                        <br />
-                        <br />
-                        <input type="submit" value="Register!">
-                    </form>
-                </section>
+            <section>
+                <p>Thanks for registering! It's all done, you can now log in.</p>
+            </section>
             <% } %>
         </article>
-    </main> 
+    </main>
     <% include ../templates/footer %>
 </body>
