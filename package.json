@@ -4,7 +4,8 @@
   "description": "Anton Base Framework",
   "author": "Build This!",
   "scripts": {
-    "start": "nodemon main.js"
+    "start": "nodemon main.js",
+    "stop": "killall node"
   },
   "dependencies": {
     "express-session": "1.16.2",
